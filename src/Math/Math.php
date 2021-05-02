@@ -19,4 +19,11 @@ final class Math
     {
         return gmp_intval(gmp_gcd($a, $b));
     }
+
+    /**
+     * Math constructor.
+     */
+    private function __construct()
+    {
+    }
 }
