@@ -2,6 +2,7 @@
 
 namespace pbaczek\fraction;
 
+use InvalidArgumentException;
 use pbaczek\fraction\Dictionaries\Sign;
 use pbaczek\fraction\Exceptions\NegativeDenominatorException;
 use pbaczek\fraction\Exceptions\ZeroDenominatorException;
@@ -111,7 +112,7 @@ abstract class FractionAbstract
      */
     public function changeSign(): void
     {
-        if ($this->equalsZero()) {
+        if ($this->equals(0)) {
             return;
         }
 
@@ -162,11 +163,12 @@ abstract class FractionAbstract
 
     /**
      * Get real value
+     * @param int $precision
      * @return float
      */
-    public function getRealValue(): float
+    public function getRealValue(int $precision = 2): float
     {
-        return round($this->getNumerator() / $this->getDenominator(), 2);
+        return round($this->getNumerator() / $this->getDenominator(), abs($precision));
     }
 
     /**
@@ -185,10 +187,25 @@ abstract class FractionAbstract
     }
 
     /**
-     * Returns true when FractionAbstract equals Zero
+     * @param FractionAbstract|int|float $fractionAbstract
      * @return bool
      */
-    abstract public function equalsZero(): bool;
+    public function equals($fractionAbstract): bool
+    {
+        if (is_int($fractionAbstract) === true) {
+            return $this->getRealValue() === $fractionAbstract;
+        }
+
+        if (is_float($fractionAbstract) === true) {
+            return abs($this->getRealValue() - $fractionAbstract) <= 0.0000001;
+        }
+
+        if ($fractionAbstract instanceof FractionAbstract) {
+            return $fractionAbstract->getNumerator() === $this->getNumerator() && $fractionAbstract->getDenominator() === $this->getDenominator();
+        }
+
+        throw new InvalidArgumentException('invalid parameter');
+    }
 
     /**
      * Add

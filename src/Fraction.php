@@ -15,15 +15,6 @@ class Fraction extends FractionAbstract
     use FractionMathHelper, RealPartDivider;
 
     /**
-     * Checks if fraction is equal to zero
-     * @return bool
-     */
-    public function equalsZero(): bool
-    {
-        return $this->getNumerator() === 0;
-    }
-
-    /**
      * @inheritDoc
      * @param Fraction $fractionAbstract
      * @return void

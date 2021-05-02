@@ -116,25 +116,17 @@ class MFraction extends FractionAbstract
     }
 
     /**
-     * Returns true when FractionAbstract equals Zero
-     * @return bool
-     */
-    public function equalsZero(): bool
-    {
-        return $this->getNumerator() === 0 && $this->mNumerator === 0;
-    }
-
-    /**
      * Return float value of FractionAbstract
+     * @param int $precision
      * @return float
      */
-    public function getRealValue(): float
+    public function getRealValue(int $precision = 2): float
     {
         if ($this->mNumerator !== 0) {
             return $this->mNumerator >= 0 ? PHP_INT_MAX : PHP_INT_MIN;
         }
 
-        return parent::getRealValue();
+        return parent::getRealValue($precision);
     }
 
     /**
