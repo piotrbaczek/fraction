@@ -3,8 +3,6 @@
 namespace pbaczek\fraction;
 
 use InvalidArgumentException;
-use pbaczek\fraction\Math\FractionMathHelper;
-use pbaczek\fraction\Math\RealPartDivider;
 
 /**
  * Class Fraction
@@ -12,8 +10,6 @@ use pbaczek\fraction\Math\RealPartDivider;
  */
 class Fraction extends FractionAbstract
 {
-    use FractionMathHelper, RealPartDivider;
-
     /**
      * @inheritDoc
      * @param Fraction $fractionAbstract

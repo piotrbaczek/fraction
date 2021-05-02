@@ -6,6 +6,7 @@ use InvalidArgumentException;
 use pbaczek\fraction\Dictionaries\Sign;
 use pbaczek\fraction\Exceptions\NegativeDenominatorException;
 use pbaczek\fraction\Exceptions\ZeroDenominatorException;
+use pbaczek\fraction\Math\Math;
 
 /**
  * Class FractionAbstract
@@ -208,6 +209,49 @@ abstract class FractionAbstract
     }
 
     /**
+     * Reduce numerator and denominator
+     * @return void
+     */
+    protected function reduction(): void
+    {
+        if ($this->getNumerator() == 0) {
+            $this->setDenominatorWithoutReduction(1);
+            return;
+        }
+
+        if (abs($this->getNumerator()) == 1 || $this->getDenominator() == 1) {
+            return;
+        }
+
+        $greatestCommonDivisor = Math::greatestCommonDivisor($this->getNumerator(), $this->getDenominator());
+        $this->setNumeratorWithoutReduction($this->getNumerator() / $greatestCommonDivisor);
+        $this->setDenominatorWithoutReduction($this->getDenominator() / $greatestCommonDivisor);
+    }
+
+    /**
+     * Divide real part
+     * @param FractionAbstract $fractionAbstract
+     * @return void
+     */
+    protected function divideRealPart(FractionAbstract $fractionAbstract): void
+    {
+        $newNumerator = $this->getNumerator() * $fractionAbstract->getDenominator();
+        if ($newNumerator < 0) {
+            $this->changeSign();
+        }
+
+        $this->setNumeratorWithoutReduction(abs($newNumerator));
+
+        $newDenominator = $this->getDenominator() * $fractionAbstract->getNumerator();
+
+        if ($newDenominator < 0) {
+            $this->changeSign();
+        }
+
+        $this->setDenominatorWithoutReduction(abs($newDenominator));
+    }
+
+    /**
      * Add
      * @param FractionAbstract $fractionAbstract
      */
@@ -230,10 +274,4 @@ abstract class FractionAbstract
      * @param FractionAbstract $fractionAbstract
      */
     abstract public function multiply($fractionAbstract): void;
-
-    /**
-     * Perform reduction of parameters
-     * @return void
-     */
-    abstract protected function reduction(): void;
 }
