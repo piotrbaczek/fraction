@@ -238,11 +238,8 @@ class MFraction extends FractionAbstract
             return;
         }
 
-        $greatestCommonDivisor = Math::greatestCommonDivisor($this->getNumerator(), $this->getDenominator());
-        $this->setNumeratorWithoutReduction($this->getNumerator() / $greatestCommonDivisor);
-        $this->setDenominatorWithoutReduction($this->getDenominator() / $greatestCommonDivisor);
-
         $this->reduceMPart();
+        parent::reduction();
     }
 
     /**
