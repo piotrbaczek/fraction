@@ -1,0 +1,16 @@
+{
+  "name": "pbaczek/fraction",
+  "description": "",
+  "require": {
+    "php": "7.3.*",
+    "ext-gmp": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "pbaczek\\fraction\\": "src/"
+    }
+  }
+}
