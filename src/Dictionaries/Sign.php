@@ -1,13 +1,12 @@
 <?php
 
-
 namespace pbaczek\fraction\Dictionaries;
 
 /**
  * Class Sign
  * @package pbaczek\fraction\Dictionaries
  */
-final class Sign
+final class Sign extends DictionaryAbstract
 {
     /**
      * Non-negative number
