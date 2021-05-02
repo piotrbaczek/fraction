@@ -2,7 +2,7 @@
   "name": "pbaczek/fraction",
   "description": "",
   "require": {
-    "php": "7.* || 8.*",
+    "php": "^7.1 || 8.*",
     "ext-gmp": "*"
   },
   "require-dev": {
@@ -17,5 +17,8 @@
     "psr-4": {
       "pbaczek\\fraction\\tests\\": "tests/"
     }
+  },
+  "config": {
+    "optimize-autoloader": true
   }
 }
