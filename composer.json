@@ -2,7 +2,7 @@
   "name": "pbaczek/fraction",
   "description": "",
   "require": {
-    "php": "7.3.*",
+    "php": "7.* || 8.*",
     "ext-gmp": "*"
   },
   "require-dev": {
