@@ -12,5 +12,10 @@
     "psr-4": {
       "pbaczek\\fraction\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "pbaczek\\fraction\\tests\\": "tests/"
+    }
   }
 }
