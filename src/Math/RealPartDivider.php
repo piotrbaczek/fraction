@@ -13,8 +13,9 @@ trait RealPartDivider
     /**
      * Divide real part
      * @param FractionAbstract $fractionAbstract
+     * @return void
      */
-    private function divideRealPart($fractionAbstract)
+    private function divideRealPart(FractionAbstract $fractionAbstract): void
     {
         $newNumerator = $this->getNumerator() * $fractionAbstract->getDenominator();
         if ($newNumerator < 0) {
