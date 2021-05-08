@@ -3,7 +3,7 @@
   "description": "Library that handles fractions as nominator/denominator",
   "license": "MIT",
   "require": {
-    "php": "^7.1 || 8.*",
+    "php": "7.*",
     "ext-gmp": "*"
   },
   "require-dev": {
