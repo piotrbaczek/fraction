@@ -1,6 +1,7 @@
 {
   "name": "pbaczek/fraction",
-  "description": "",
+  "description": "Library that handles fractions as nominator/denominator",
+  "license": "MIT",
   "require": {
     "php": "^7.1 || 8.*",
     "ext-gmp": "*"
