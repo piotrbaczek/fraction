@@ -16,8 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class FractionTest extends TestCase
 {
-    /** @var Fraction $fraction */
-    private $fraction;
+    private Fraction $fraction;
 
     /**
      * @inheritDoc

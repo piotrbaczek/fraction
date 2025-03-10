@@ -12,13 +12,10 @@ use pbaczek\fraction\Math\Math;
  */
 class MFraction extends FractionAbstract
 {
-    private const M_SIGN = 'M';
+    private const string M_SIGN = 'M';
 
-    /** @var int $mNumerator */
-    private $mNumerator;
-
-    /** @var int $mDenominator */
-    private $mDenominator;
+    private int $mNumerator;
+    private int $mDenominator;
 
     /**
      * MFraction constructor.
@@ -139,10 +136,10 @@ class MFraction extends FractionAbstract
         }
 
         if ($this->mDenominator === 1) {
-            return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE : '') . $this->mNumerator . self::M_SIGN;
+            return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE->value : '') . $this->mNumerator . self::M_SIGN;
         }
 
-        return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE : '') . $this->mNumerator . '/' . $this->mDenominator . self::M_SIGN;
+        return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE->value : '') . $this->mNumerator . '/' . $this->mDenominator . self::M_SIGN;
     }
 
     /**

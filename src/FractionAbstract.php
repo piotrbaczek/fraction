@@ -14,17 +14,11 @@ use pbaczek\fraction\Math\Math;
  */
 abstract class FractionAbstract
 {
-    /** @var int $numerator */
-    private $numerator;
+    private int $numerator;
 
-    /** @var int $denominator */
-    private $denominator;
+    private int $denominator;
 
-    /**
-     * FractionAbstract constructor.
-     * @param int $numerator
-     * @param int $denominator
-     */
+
     public function __construct(int $numerator, int $denominator = 1)
     {
         $this->validateDenominator($denominator);
@@ -34,26 +28,20 @@ abstract class FractionAbstract
         $this->reduction();
     }
 
-    /**
-     * @return int
-     */
     public function getNumerator(): int
     {
         return $this->numerator;
     }
 
-    /**
-     * @return int
-     */
     public function getDenominator(): int
     {
         return $this->denominator;
     }
 
     /**
-     * @return string
+     * @return Sign
      */
-    public function getSign(): string
+    public function getSign(): Sign
     {
         return $this->numerator >= 0 ? Sign::NON_NEGATIVE : Sign::NEGATIVE;
     }
@@ -122,9 +110,9 @@ abstract class FractionAbstract
 
     /**
      * Tests if Fraction is an Integer
-     * @return boolean
+     * @return bool
      */
-    public function isFraction()
+    public function isFraction(): bool
     {
         return $this->getDenominator() != 1;
     }
