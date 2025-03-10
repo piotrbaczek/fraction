@@ -9,6 +9,7 @@ use pbaczek\fraction\Exceptions\ZeroDenominatorException;
 use pbaczek\fraction\Fraction;
 use pbaczek\fraction\MFraction;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -248,6 +249,7 @@ class FractionTest extends TestCase
     }
 
     #[DataProvider('definedFunctions')]
+    #[TestDox('Tests that you can only perform functions on same class objects')]
     public function testAllMathFunctionsWorkOnlyOnSameObject(string $function): void
     {
         $this->expectException(InvalidArgumentException::class);
