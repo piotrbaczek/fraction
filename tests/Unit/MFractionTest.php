@@ -8,6 +8,7 @@ use pbaczek\fraction\Exceptions\NegativeDenominatorException;
 use pbaczek\fraction\Exceptions\ZeroDenominatorException;
 use pbaczek\fraction\Fraction;
 use pbaczek\fraction\MFraction;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -205,14 +206,9 @@ class MFractionTest extends TestCase
         ];
     }
 
-    /**
-     * Test that only same type objects can be added
-     * @dataProvider definedFunctions
-     * @return void
-     */
-    public function testAllMathFunctionsWorkOnlyOnSameObject(): void
+    #[DataProvider('definedFunctions')]
+    public function testAllMathFunctionsWorkOnlyOnSameObject(string $function): void
     {
-        $this->markTestSkipped('problem with dataProvider');
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Only same class allowed');
 
