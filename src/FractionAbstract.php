@@ -88,7 +88,7 @@ abstract class FractionAbstract
      * @param int $denominator
      * @return $this
      */
-    protected function setDenominatorWithoutReduction(int $denominator)
+    protected function setDenominatorWithoutReduction(int $denominator): static
     {
         $this->validateDenominator($denominator);
         $this->denominator = $denominator;
