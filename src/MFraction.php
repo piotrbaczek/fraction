@@ -12,13 +12,10 @@ use pbaczek\fraction\Math\Math;
  */
 class MFraction extends FractionAbstract
 {
-    private const M_SIGN = 'M';
+    private const string M_SIGN = 'M';
 
-    /** @var int $mNumerator */
-    private $mNumerator;
-
-    /** @var int $mDenominator */
-    private $mDenominator;
+    private int $mNumerator;
+    private int $mDenominator;
 
     /**
      * MFraction constructor.
@@ -139,17 +136,17 @@ class MFraction extends FractionAbstract
         }
 
         if ($this->mDenominator === 1) {
-            return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE : '') . $this->mNumerator . self::M_SIGN;
+            return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE->value : '') . $this->mNumerator . self::M_SIGN;
         }
 
-        return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE : '') . $this->mNumerator . '/' . $this->mDenominator . self::M_SIGN;
+        return $realPart . ($this->mNumerator >= 0 ? Sign::NON_NEGATIVE->value : '') . $this->mNumerator . '/' . $this->mDenominator . self::M_SIGN;
     }
 
     /**
      * Add
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function add($fractionAbstract): void
+    public function add(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -166,9 +163,9 @@ class MFraction extends FractionAbstract
 
     /**
      * Subtract
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function subtract($fractionAbstract): void
+    public function subtract(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -185,9 +182,9 @@ class MFraction extends FractionAbstract
 
     /**
      * Divide
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function divide($fractionAbstract): void
+    public function divide(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -264,9 +261,9 @@ class MFraction extends FractionAbstract
 
     /**
      * Multiply
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function multiply($fractionAbstract): void
+    public function multiply(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');

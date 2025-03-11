@@ -3,18 +3,11 @@
 namespace pbaczek\fraction\Dictionaries;
 
 /**
- * Class Sign
+ * Enum Sign
  * @package pbaczek\fraction\Dictionaries
  */
-final class Sign extends DictionaryAbstract
+enum Sign: string
 {
-    /**
-     * Non-negative number
-     */
-    public const NON_NEGATIVE = '+';
-
-    /**
-     * Negative number
-     */
-    public const NEGATIVE = '-';
+    case NON_NEGATIVE = '+';
+    case NEGATIVE = '-';
 }

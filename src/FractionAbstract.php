@@ -14,17 +14,11 @@ use pbaczek\fraction\Math\Math;
  */
 abstract class FractionAbstract
 {
-    /** @var int $numerator */
-    private $numerator;
+    private int $numerator;
 
-    /** @var int $denominator */
-    private $denominator;
+    private int $denominator;
 
-    /**
-     * FractionAbstract constructor.
-     * @param int $numerator
-     * @param int $denominator
-     */
+
     public function __construct(int $numerator, int $denominator = 1)
     {
         $this->validateDenominator($denominator);
@@ -34,26 +28,20 @@ abstract class FractionAbstract
         $this->reduction();
     }
 
-    /**
-     * @return int
-     */
     public function getNumerator(): int
     {
         return $this->numerator;
     }
 
-    /**
-     * @return int
-     */
     public function getDenominator(): int
     {
         return $this->denominator;
     }
 
     /**
-     * @return string
+     * @return Sign
      */
-    public function getSign(): string
+    public function getSign(): Sign
     {
         return $this->numerator >= 0 ? Sign::NON_NEGATIVE : Sign::NEGATIVE;
     }
@@ -100,7 +88,7 @@ abstract class FractionAbstract
      * @param int $denominator
      * @return $this
      */
-    protected function setDenominatorWithoutReduction(int $denominator)
+    protected function setDenominatorWithoutReduction(int $denominator): static
     {
         $this->validateDenominator($denominator);
         $this->denominator = $denominator;
@@ -122,9 +110,9 @@ abstract class FractionAbstract
 
     /**
      * Tests if Fraction is an Integer
-     * @return boolean
+     * @return bool
      */
-    public function isFraction()
+    public function isFraction(): bool
     {
         return $this->getDenominator() != 1;
     }
@@ -255,23 +243,23 @@ abstract class FractionAbstract
      * Add
      * @param FractionAbstract $fractionAbstract
      */
-    abstract public function add($fractionAbstract): void;
+    abstract public function add(FractionAbstract $fractionAbstract): void;
 
     /**
      * Subtract
      * @param FractionAbstract $fractionAbstract
      */
-    abstract public function subtract($fractionAbstract): void;
+    abstract public function subtract(FractionAbstract $fractionAbstract): void;
 
     /**
      * Divide
      * @param FractionAbstract $fractionAbstract
      */
-    abstract public function divide($fractionAbstract): void;
+    abstract public function divide(FractionAbstract $fractionAbstract): void;
 
     /**
      * Multiply
      * @param FractionAbstract $fractionAbstract
      */
-    abstract public function multiply($fractionAbstract): void;
+    abstract public function multiply(FractionAbstract $fractionAbstract): void;
 }

@@ -8,6 +8,8 @@ use pbaczek\fraction\Exceptions\NegativeDenominatorException;
 use pbaczek\fraction\Exceptions\ZeroDenominatorException;
 use pbaczek\fraction\Fraction;
 use pbaczek\fraction\MFraction;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,8 +18,7 @@ use PHPUnit\Framework\TestCase;
  */
 class FractionTest extends TestCase
 {
-    /** @var Fraction $fraction */
-    private $fraction;
+    private Fraction $fraction;
 
     /**
      * @inheritDoc
@@ -217,6 +218,8 @@ class FractionTest extends TestCase
 
         $this->fraction->changeSign();
         $this->assertEquals(-0.33, $this->fraction->getRealValue());
+        $this->assertEquals(-1, $this->fraction->getNumerator());
+        $this->assertEquals(3, $this->fraction->getDenominator());
 
         $this->fraction->multiply(new Fraction(3));
         $this->assertEquals(-1, $this->fraction->getRealValue());
@@ -229,7 +232,7 @@ class FractionTest extends TestCase
      * Defined functions for
      * @return array
      */
-    public function definedFunctions(): array
+    public static function definedFunctions(): array
     {
         return [
             [
@@ -247,12 +250,8 @@ class FractionTest extends TestCase
         ];
     }
 
-    /**
-     * Test that only same type objects can be added
-     * @dataProvider definedFunctions
-     * @param string $function
-     * @return void
-     */
+    #[DataProvider('definedFunctions')]
+    #[TestDox('Tests that you can only perform functions on same class objects')]
     public function testAllMathFunctionsWorkOnlyOnSameObject(string $function): void
     {
         $this->expectException(InvalidArgumentException::class);
