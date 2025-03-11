@@ -144,9 +144,9 @@ class MFraction extends FractionAbstract
 
     /**
      * Add
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function add($fractionAbstract): void
+    public function add(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -163,9 +163,9 @@ class MFraction extends FractionAbstract
 
     /**
      * Subtract
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function subtract($fractionAbstract): void
+    public function subtract(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -182,9 +182,9 @@ class MFraction extends FractionAbstract
 
     /**
      * Divide
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function divide($fractionAbstract): void
+    public function divide(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -261,9 +261,9 @@ class MFraction extends FractionAbstract
 
     /**
      * Multiply
-     * @param MFraction $fractionAbstract
+     * @param FractionAbstract $fractionAbstract
      */
-    public function multiply($fractionAbstract): void
+    public function multiply(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
