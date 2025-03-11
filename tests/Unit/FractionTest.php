@@ -218,6 +218,8 @@ class FractionTest extends TestCase
 
         $this->fraction->changeSign();
         $this->assertEquals(-0.33, $this->fraction->getRealValue());
+        $this->assertEquals(-1, $this->fraction->getNumerator());
+        $this->assertEquals(3, $this->fraction->getDenominator());
 
         $this->fraction->multiply(new Fraction(3));
         $this->assertEquals(-1, $this->fraction->getRealValue());
