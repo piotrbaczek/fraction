@@ -110,25 +110,11 @@ class MFraction extends FractionAbstract
         $this->mNumerator = -$this->mNumerator;
     }
 
-//    /**
-//     * Return float value of FractionAbstract
-//     * @param int $precision
-//     * @return float
-//     */
-//    public function getRealValue(int $precision = 2): float
-//    {
-//        if ($this->mNumerator !== 0) {
-//            return $this->mNumerator >= 0 ? PHP_INT_MAX : PHP_INT_MIN;
-//        }
-//
-//        return parent::getRealValue($precision);
-//    }
-
     /**
      * Return string of FractionAbstract
      * @return string
      */
-    public function __toString(): string
+    #[Override] public function __toString(): string
     {
         $realPart = parent::__toString();
 
@@ -147,7 +133,7 @@ class MFraction extends FractionAbstract
      * Add
      * @param FractionAbstract $fractionAbstract
      */
-    public function add(FractionAbstract $fractionAbstract): void
+    #[Override] public function add(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -166,7 +152,7 @@ class MFraction extends FractionAbstract
      * Subtract
      * @param FractionAbstract $fractionAbstract
      */
-    public function subtract(FractionAbstract $fractionAbstract): void
+    #[Override] public function subtract(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -185,7 +171,7 @@ class MFraction extends FractionAbstract
      * Divide
      * @param FractionAbstract $fractionAbstract
      */
-    public function divide(FractionAbstract $fractionAbstract): void
+    #[Override] public function divide(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
@@ -264,7 +250,7 @@ class MFraction extends FractionAbstract
      * Multiply
      * @param FractionAbstract $fractionAbstract
      */
-    public function multiply(FractionAbstract $fractionAbstract): void
+    #[Override] public function multiply(FractionAbstract $fractionAbstract): void
     {
         if ($fractionAbstract instanceof self === false) {
             throw new InvalidArgumentException('Only same class allowed');
