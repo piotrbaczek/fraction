@@ -3,6 +3,7 @@
 namespace pbaczek\fraction;
 
 use InvalidArgumentException;
+use Override;
 use pbaczek\fraction\Dictionaries\Sign;
 use pbaczek\fraction\Math\Math;
 
@@ -109,19 +110,19 @@ class MFraction extends FractionAbstract
         $this->mNumerator = -$this->mNumerator;
     }
 
-    /**
-     * Return float value of FractionAbstract
-     * @param int $precision
-     * @return float
-     */
-    public function getRealValue(int $precision = 2): float
-    {
-        if ($this->mNumerator !== 0) {
-            return $this->mNumerator >= 0 ? PHP_INT_MAX : PHP_INT_MIN;
-        }
-
-        return parent::getRealValue($precision);
-    }
+//    /**
+//     * Return float value of FractionAbstract
+//     * @param int $precision
+//     * @return float
+//     */
+//    public function getRealValue(int $precision = 2): float
+//    {
+//        if ($this->mNumerator !== 0) {
+//            return $this->mNumerator >= 0 ? PHP_INT_MAX : PHP_INT_MIN;
+//        }
+//
+//        return parent::getRealValue($precision);
+//    }
 
     /**
      * Return string of FractionAbstract
@@ -276,5 +277,23 @@ class MFraction extends FractionAbstract
         $this->setMDenominatorWithoutReduction($this->getMDenominator() * $fractionAbstract->getMDenominator());
 
         $this->reduction();
+    }
+
+    #[Override] public function getValue(): int|float
+    {
+        if ($this->getMNumerator() === 0) {
+            return $this->getNumerator() / $this->getDenominator();
+        }
+
+        return $this->getMNumerator() > 0 ? PHP_INT_MAX : PHP_INT_MIN;
+    }
+
+    #[Override] public function getRealValue(int $precision = 2): int|float
+    {
+        if ($this->getMNumerator() === 0) {
+            return round($this->getNumerator() / $this->getDenominator(), abs($precision));
+        }
+
+        return $this->getMNumerator() > 0 ? PHP_INT_MAX : PHP_INT_MIN;
     }
 }

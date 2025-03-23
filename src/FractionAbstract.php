@@ -151,16 +151,6 @@ abstract class FractionAbstract
     }
 
     /**
-     * Get real value
-     * @param int $precision
-     * @return float
-     */
-    public function getRealValue(int $precision = 2): float
-    {
-        return round($this->getNumerator() / $this->getDenominator(), abs($precision));
-    }
-
-    /**
      * Print object
      * @return string
      */
@@ -176,17 +166,17 @@ abstract class FractionAbstract
     }
 
     /**
-     * @param FractionAbstract|int|float $fractionAbstract
+     * @param float|int|FractionAbstract $fractionAbstract
      * @return bool
      */
-    public function equals($fractionAbstract): bool
+    public function equals(FractionAbstract|float|int $fractionAbstract): bool
     {
         if (is_int($fractionAbstract) === true) {
-            return $this->getRealValue() === $fractionAbstract;
+            return $this->getValue() === $fractionAbstract;
         }
 
         if (is_float($fractionAbstract) === true) {
-            return abs($this->getRealValue() - $fractionAbstract) <= 0.0000001;
+            return abs($this->getValue() - $fractionAbstract) <= 0.0000001;
         }
 
         if ($fractionAbstract instanceof FractionAbstract) {
@@ -262,4 +252,17 @@ abstract class FractionAbstract
      * @param FractionAbstract $fractionAbstract
      */
     abstract public function multiply(FractionAbstract $fractionAbstract): void;
+
+    /**
+     * Get value
+     * @return int|float
+     */
+    abstract public function getValue(): int|float;
+
+    /**
+     * Get real value
+     * @param int $precision
+     * @return int|float
+     */
+    abstract public function getRealValue(int $precision = 2): int|float;
 }

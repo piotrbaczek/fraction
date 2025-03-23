@@ -176,12 +176,15 @@ class MFractionTest extends TestCase
     {
         $this->mFraction->setMNumerator(0);
         $this->assertEquals(0.5, $this->mFraction->getRealValue());
+        $this->assertEquals(0.5, $this->mFraction->getValue());
 
         $this->mFraction->setMNumerator(1);
         $this->assertEquals(PHP_INT_MAX, $this->mFraction->getRealValue());
+        $this->assertEquals(PHP_INT_MAX, $this->mFraction->getValue());
 
         $this->mFraction->setMNumerator(-1);
         $this->assertEquals(PHP_INT_MIN, $this->mFraction->getRealValue());
+        $this->assertEquals(PHP_INT_MIN, $this->mFraction->getValue());
     }
 
     /**

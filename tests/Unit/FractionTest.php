@@ -40,6 +40,7 @@ class FractionTest extends TestCase
         $this->assertEquals(2, $this->fraction->getDenominator());
         $this->assertEquals(Sign::NON_NEGATIVE, $this->fraction->getSign());
         $this->assertEquals(0.5, $this->fraction->getRealValue());
+        $this->assertEquals(0.5, $this->fraction->getValue());
         $this->assertTrue($this->fraction->isFraction());
     }
 
@@ -215,17 +216,23 @@ class FractionTest extends TestCase
         $this->fraction->setNumerator(1);
         $this->fraction->setDenominator(3);
         $this->assertEquals(0.33, $this->fraction->getRealValue());
+        $this->assertEquals(1/3, $this->fraction->getValue());
 
         $this->fraction->changeSign();
         $this->assertEquals(-0.33, $this->fraction->getRealValue());
+        $this->assertEquals(-1/3, $this->fraction->getValue());
         $this->assertEquals(-1, $this->fraction->getNumerator());
         $this->assertEquals(3, $this->fraction->getDenominator());
 
         $this->fraction->multiply(new Fraction(3));
         $this->assertEquals(-1, $this->fraction->getRealValue());
+        $this->assertEquals(-1, $this->fraction->getValue());
+        $this->assertTrue($this->fraction->isNegative());
+        $this->assertFalse($this->fraction->isNonNegative());
 
         $this->fraction->changeSign();
         $this->assertEquals(1, $this->fraction->getRealValue());
+        $this->assertEquals(1, $this->fraction->getValue());
     }
 
     /**
