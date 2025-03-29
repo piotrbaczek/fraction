@@ -12,6 +12,16 @@ use Override;
 class Fraction extends FractionAbstract
 {
     /**
+     * Creates new object from existing object
+     * @param FractionAbstract $fractionAbstract
+     * @return static
+     */
+    public static function from(FractionAbstract $fractionAbstract): static
+    {
+        return new static($fractionAbstract->getNumerator(), $fractionAbstract->getDenominator());
+    }
+
+    /**
      * @inheritDoc
      * @param FractionAbstract $fractionAbstract
      * @return void
