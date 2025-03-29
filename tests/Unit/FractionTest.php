@@ -236,6 +236,24 @@ class FractionTest extends TestCase
     }
 
     /**
+     * Tests creating new Fraction from existing fraction
+     * @return void
+     */
+    public function testCreatingFractionFromFraction(): void
+    {
+        $fraction = new Fraction(1,3);
+
+        $newFraction = Fraction::from($fraction);
+
+        $fraction->setNumerator(2);
+
+        $this->assertEquals(2, $fraction->getNumerator());
+        $this->assertEquals(3, $fraction->getDenominator());
+        $this->assertEquals(1, $newFraction->getNumerator());
+        $this->assertEquals(3, $newFraction->getDenominator());
+    }
+
+    /**
      * Defined functions for
      * @return array
      */
