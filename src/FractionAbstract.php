@@ -214,19 +214,16 @@ abstract class FractionAbstract
     protected function divideRealPart(FractionAbstract $fractionAbstract): void
     {
         $newNumerator = $this->getNumerator() * $fractionAbstract->getDenominator();
-        if ($newNumerator < 0) {
-            $this->changeSign();
-        }
 
-        $this->setNumeratorWithoutReduction(abs($newNumerator));
+        $this->setNumeratorWithoutReduction($newNumerator);
 
         $newDenominator = $this->getDenominator() * $fractionAbstract->getNumerator();
+
+        $this->setDenominatorWithoutReduction(abs($newDenominator));
 
         if ($newDenominator < 0) {
             $this->changeSign();
         }
-
-        $this->setDenominatorWithoutReduction(abs($newDenominator));
     }
 
     /**
