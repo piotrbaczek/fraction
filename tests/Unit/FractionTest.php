@@ -216,11 +216,11 @@ class FractionTest extends TestCase
         $this->fraction->setNumerator(1);
         $this->fraction->setDenominator(3);
         $this->assertEquals(0.33, $this->fraction->getRealValue());
-        $this->assertEquals(1/3, $this->fraction->getValue());
+        $this->assertEquals(1 / 3, $this->fraction->getValue());
 
         $this->fraction->changeSign();
         $this->assertEquals(-0.33, $this->fraction->getRealValue());
-        $this->assertEquals(-1/3, $this->fraction->getValue());
+        $this->assertEquals(-1 / 3, $this->fraction->getValue());
         $this->assertEquals(-1, $this->fraction->getNumerator());
         $this->assertEquals(3, $this->fraction->getDenominator());
 
@@ -241,7 +241,7 @@ class FractionTest extends TestCase
      */
     public function testCreatingFractionFromFraction(): void
     {
-        $fraction = new Fraction(1,3);
+        $fraction = new Fraction(1, 3);
 
         $newFraction = Fraction::from($fraction);
 
@@ -251,6 +251,17 @@ class FractionTest extends TestCase
         $this->assertEquals(3, $fraction->getDenominator());
         $this->assertEquals(1, $newFraction->getNumerator());
         $this->assertEquals(3, $newFraction->getDenominator());
+    }
+
+    /**
+     * @return void
+     */
+    public function testDivisionOfNegativeFractionByPositiveRealNumber(): void
+    {
+        $fraction = new Fraction(-5, 3);
+        $fraction->divide(new Fraction(2));
+        $this->assertEquals(-5, $fraction->getNumerator());
+        $this->assertEquals(6, $fraction->getDenominator());
     }
 
     /**
