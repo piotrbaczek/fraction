@@ -19,6 +19,21 @@ class MFraction extends FractionAbstract
     private int $mDenominator;
 
     /**
+     * Creates new object from existing object
+     * @param MFraction $mFraction
+     * @return static
+     */
+    public static function from(MFraction $mFraction): static
+    {
+        return new static(
+            $mFraction->getNumerator(),
+            $mFraction->getDenominator(),
+            $mFraction->getMNumerator(),
+            $mFraction->getMDenominator()
+        );
+    }
+
+    /**
      * MFraction constructor.
      * @param int $numerator
      * @param int $denominator
@@ -111,7 +126,7 @@ class MFraction extends FractionAbstract
     }
 
     /**
-     * Return string of FractionAbstract
+     * Return string of MFraction
      * @return string
      */
     #[Override] public function __toString(): string
