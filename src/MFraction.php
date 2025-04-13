@@ -126,7 +126,7 @@ class MFraction extends FractionAbstract
     }
 
     /**
-     * Return string of FractionAbstract
+     * Return string of MFraction
      * @return string
      */
     #[Override] public function __toString(): string
