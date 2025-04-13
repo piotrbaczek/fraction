@@ -188,6 +188,26 @@ class MFractionTest extends TestCase
     }
 
     /**
+     * @return void
+     */
+    public function testFromMFraction(): void
+    {
+        $mFraction = new MFraction(1,2,3,3);
+        $newMFraction = MFraction::from($mFraction);
+        $mFraction->setNumerator(2);
+
+        $this->assertEquals(1, $mFraction->getNumerator());
+        $this->assertEquals(1, $mFraction->getDenominator());
+        $this->assertEquals(1, $mFraction->getMNumerator());
+        $this->assertEquals(1, $mFraction->getMDenominator());
+
+        $this->assertEquals(1, $newMFraction->getNumerator());
+        $this->assertEquals(2, $newMFraction->getDenominator());
+        $this->assertEquals(1, $newMFraction->getMNumerator());
+        $this->assertEquals(1, $newMFraction->getMDenominator());
+    }
+
+    /**
      * Defined functions for
      * @return array
      */

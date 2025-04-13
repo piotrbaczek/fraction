@@ -13,10 +13,10 @@ class Fraction extends FractionAbstract
 {
     /**
      * Creates new object from existing object
-     * @param FractionAbstract $fractionAbstract
+     * @param Fraction $fractionAbstract
      * @return static
      */
-    public static function from(FractionAbstract $fractionAbstract): static
+    public static function from(Fraction $fractionAbstract): static
     {
         return new static($fractionAbstract->getNumerator(), $fractionAbstract->getDenominator());
     }
