@@ -188,7 +188,7 @@ class MFraction extends FractionAbstract
      */
     #[Override] public function divide(FractionAbstract $fractionAbstract): void
     {
-        if ($fractionAbstract instanceof self === false) {
+        if ($fractionAbstract instanceof static === false) {
             throw new InvalidArgumentException('Only same class allowed');
         }
 
@@ -215,6 +215,10 @@ class MFraction extends FractionAbstract
 
         if ($newMDenominator < 0) {
             $this->changeSign();
+        }
+
+        if ($newMDenominator === 0) {
+            $newMDenominator = 1;
         }
 
         $this->setMDenominatorWithoutReduction(abs($newMDenominator));

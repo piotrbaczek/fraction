@@ -208,6 +208,23 @@ class MFractionTest extends TestCase
     }
 
     /**
+     * Tests correct division of MFraction with MPart equal to 0
+     * @return void
+     */
+    public function testDivisionOfMFractionsWithZeroM(): void
+    {
+        $numerator = new MFraction(35,1,0,1);
+        $denominator = new MFraction(5, 1, 0, 1);
+
+        $numerator->divide($denominator);
+
+        $this->assertEquals(7, $numerator->getNumerator());
+        $this->assertEquals(1, $numerator->getDenominator());
+        $this->assertEquals(0, $numerator->getMNumerator());
+        $this->assertEquals(1, $numerator->getMDenominator());
+    }
+
+    /**
      * Defined functions for
      * @return array
      */
